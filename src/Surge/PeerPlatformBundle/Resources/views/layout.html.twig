@@ -1,0 +1,28 @@
+
+{%if form is defined %} {% form_theme form "SurgePeerPlatformBundle::form.html.twig" %} {%endif%}
+{%if edit_form is defined %} {% form_theme edit_form "SurgePeerPlatformBundle::form.html.twig" %} {%endif%}
+
+<html>
+<head>
+    <title>{% block title %}{{ pageTitle is defined ? pageTitle : 'Humtum' }}{% endblock %}</title>
+
+</head>
+<body>
+{%block body%}
+    {%block header%}
+        {%include 'SurgePeerPlatformBundle::header.html.twig' %}
+    {%endblock%}
+
+    {%block container%}
+        {%block content%}
+        {%endblock%}
+    {%endblock%}
+
+    {%block footer%}
+        {%include 'SurgePeerPlatformBundle::footer.html.twig' %}
+    {%endblock%}
+
+{%endblock%}
+</body>
+</html>
+

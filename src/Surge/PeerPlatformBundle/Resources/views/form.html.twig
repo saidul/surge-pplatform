@@ -1,0 +1,23 @@
+{% block field_row %}
+{% spaceless %}
+    <div {% if attr.class is not defined %} class="dvCellS"
+        {% endif %}
+        {% for attrname,attrvalue in attr %}
+            {% if attrname != 'tabindex' %} {{attrname}}="{{attrvalue}}" {% endif %}
+        {% endfor %}
+        >
+        {{ form_label(form) }}
+        {{ form_errors(form) }}
+        {% if attr.tabindex is defined %}
+            {{ form_widget(form, {'attr':{'tabindex': attr.tabindex} }) }}
+        {% else %}
+            {{ form_widget(form) }}
+        {% endif %}
+    </div>
+{% endspaceless %}
+{% endblock field_row %}
+
+
+{% block field_label %}
+
+{% endblock field_label %}
