@@ -1,0 +1,56 @@
+security:
+    factories:
+        - "%kernel.root_dir%/../src/FTree/FamilyTreeBundle/Resources/config/security_factory.xml"
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_manager
+
+    encoders:
+#        Symfony\Component\Security\Core\User\User: plaintext
+        "FOS\UserBundle\Model\UserInterface": sha512
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_provider: form.csrf_provider
+                login_path: /login
+                target_path_parameter: _redir
+                check_path: /login_check
+            remember_me:
+                key:      %secret%
+                lifetime: 1296000 #15 days in second
+                path:     /
+            logout:       true
+            anonymous:    true
+            oauth:
+                resource_owners:
+                    google:             "/login/check-google"
+                    facebook:           "/login/check-facebook"
+#                    my_custom_provider: "/login/check-custom"
+                login_path:        /login
+                failure_path:      /login-failed
+
+                # FOSUB integration
+                oauth_user_provider:
+                    service: hwi_oauth.user.provider.fosub_bridge
+
+    access_control:
+        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        #- { path: ^/_internal, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/administration, role: IS_AUTHENTICATED_FULLY }

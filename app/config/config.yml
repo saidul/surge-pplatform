@@ -1,0 +1,112 @@
+imports:
+    - { resource: parameters.ini }
+    - { resource: security.yml }
+    - { resource: services.yml }
+
+framework:
+    #esi:             ~
+    #translator:      { fallback: %locale% }
+    secret:          %secret%
+    charset:         UTF-8
+    router:          { resource: "%kernel.root_dir%/config/routing.yml" }
+    form:            true
+    csrf_protection: true
+    validation:      { enable_annotations: true }
+    templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
+    session:
+        default_locale: %locale%
+        auto_start:     true
+
+# Twig Configuration
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%
+
+# Assetic Configuration
+assetic:
+    debug:          %kernel.debug%
+    use_controller: false
+    # java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+        # closure:
+        #     jar: %kernel.root_dir%/java/compiler.jar
+        # yui_css:
+        #     jar: %kernel.root_dir%/java/yuicompressor-2.4.2.jar
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   %database_driver%
+        host:     %database_host%
+        port:     %database_port%
+        dbname:   %database_name%
+        user:     %database_user%
+        password: %database_password%
+        charset:  UTF8
+
+    orm:
+        auto_generate_proxy_classes: %kernel.debug%
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: %mailer_transport%
+    host:      %mailer_host%
+    username:  %mailer_user%
+    password:  %mailer_password%
+
+jms_security_extra:
+    secure_controllers:  true
+    secure_all_services: false
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Surge\PeerPlatformBundle\Entity\User
+    resetting:
+        token_ttl: 86400
+
+stof_doctrine_extensions:
+    default_locale: %locale%
+    orm:
+        default:
+            tree: true
+            sluggable: true
+
+opensky_htmlawed:
+    file: %kernel.root_dir%/lib/htmLawed.php
+    profiles:
+        xss_filter: #equivalent to config[safe]=true
+            config:
+                comment: 0
+                cdata:   0
+                deny_attribute: 'on*'
+                elements: '*-applet-embed-iframe-object-script'
+                scheme: 'href: aim, feed, file, ftp, gopher, http, https, irc, mailto, news, nntp, sftp, ssh, telnet; style: nil; *:file, http, https'
+        default: ~
+
+liip_imagine:
+#    driver:               gd
+    web_root:             %kernel.root_dir%/../web
+    data_root:            %uploadRoot%
+    cache_prefix:         /media/cache
+#    cache:                web_path
+#    data_loader:          filesystem
+#    controller_action:    liip_imagine.controller:filterAction
+#    formats:              []
+    filter_sets:
+        # Prototype
+        thumbnail:
+#            path:                 ~
+#            quality:              100
+#            format:               ~
+#            cache:                ~
+#            data_loader:          ~
+#            controller_action:    ~
+            filters:
+                thumbnail: { size: [128, 128], mode: outbound , allow_upscale: true }
+
+
+
+parameters:
+    uploadRoot: web

@@ -1,0 +1,54 @@
+# Internal routing configuration to handle ESI
+#_internal:
+#   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#   prefix:   /_internal
+
+_imagine:
+    resource: .
+    type:     imagine
+
+#=============== Without Locale ==============
+_login_check:
+    pattern: /login_check
+
+_login:
+    pattern: /login
+    defaults: { _controller: FTreeFamilyTreeBundle:Login:login }
+
+_logout:
+  pattern: /logout
+
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
+
+#=============== With Locale ==================
+
+_familytree_bundle:
+    resource: "@FTreeFamilyTreeBundle/Controller"
+    type: annotation
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+#fos_user_register:
+#    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+#    prefix: /{_locale}/register
+
+#fos_user_resetting:
+#    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+#    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
+
+
+_admin_bundle:
+     resource: "@FTreeAdminBundle/Controller/"
+     type:     annotation
+     prefix: /administration
