@@ -51,6 +51,86 @@ class Project extends EntityBase
      */
     protected $projectState;
 
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    }
+
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setLatitude($latitude)
+    {
+        $this->latitude = $latitude;
+    }
+
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+    }
+
+    public function getLongitude()
+    {
+        return $this->longitude;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setProjectState($projectState)
+    {
+        $this->projectState = $projectState;
+    }
+
+    public function getProjectState()
+    {
+        return $this->projectState;
+    }
+
+    public function setRating($rating)
+    {
+        $this->rating = $rating;
+    }
+
+    public function getRating()
+    {
+        return $this->rating;
+    }
+
 
 
 }

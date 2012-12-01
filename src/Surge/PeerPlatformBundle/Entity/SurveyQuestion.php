@@ -33,4 +33,46 @@ class SurveyQuestion extends EntityBase
      */
     protected $options;
 
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setOptions($options)
+    {
+        $this->options = $options;
+    }
+
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
+    public function setQustionType($qustionType)
+    {
+        $this->qustionType = $qustionType;
+    }
+
+    public function getQustionType()
+    {
+        return $this->qustionType;
+    }
+
+    public function setSurvey($survey)
+    {
+        $this->survey = $survey;
+    }
+
+    public function getSurvey()
+    {
+        return $this->survey;
+    }
+
+
+
 }

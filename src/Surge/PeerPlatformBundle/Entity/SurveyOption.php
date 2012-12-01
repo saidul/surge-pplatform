@@ -27,4 +27,36 @@ class SurveyOption extends EntityBase
      * @ORM\ManyToOne(targetEntity="SurveyQuestion")
      */
     protected $question;
+
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setQuestion($question)
+    {
+        $this->question = $question;
+    }
+
+    public function getQuestion()
+    {
+        return $this->question;
+    }
+
+    public function setValue($value)
+    {
+        $this->value = $value;
+    }
+
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+
 }

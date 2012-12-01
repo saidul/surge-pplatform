@@ -21,4 +21,25 @@ class Survey extends EntityBase
      */
     protected $project;
 
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setProject($project)
+    {
+        $this->project = $project;
+    }
+
+    public function getProject()
+    {
+        return $this->project;
+    }
+
+
 }
