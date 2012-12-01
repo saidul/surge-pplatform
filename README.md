@@ -2,7 +2,7 @@ surge-pplatform
 ===============
 
 Sanitation Hackathon 2012 Peer Platform ...
-
+This package is based on Symfony (https://github.com/symfony/symfony) PHP framework.
 Installation Instruction:
 
 create app/config/parameters.ini from parameters.ini.dist and add database info there.
@@ -16,4 +16,6 @@ To create/update database structure
 ```
 $ app/console doctrine:schema:update --force
 ```
+
+Technology Used
 
