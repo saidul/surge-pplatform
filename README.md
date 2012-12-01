@@ -13,9 +13,11 @@ $ bin/vendors install
 ```
 
 To create/update database structure
+Windows
 ```
 $ app/console doctrine:schema:update --force
 ```
-
-Technology Used
-
+Linux
+```
+$ php.exe app/console doctrine:schema:update --force
+```
