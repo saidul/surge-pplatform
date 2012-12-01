@@ -4,8 +4,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
-class Project extends EntityBase
+class Image extends File
 {
 
     /**
@@ -17,24 +18,10 @@ class Project extends EntityBase
     protected $id;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="object")
      */
-    protected $name;
+    protected $exifInfo;
 
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $description;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Category")
-     */
-    protected $category;
-
-    /**
-     * @ORM\Column(type="decimal")
-     */
-    protected $rating;
 
     /**
      * @ORM\Column(type="string")
@@ -47,9 +34,14 @@ class Project extends EntityBase
     protected $latitude;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ProjectState")
+     * @ORM\Column(type="integer")
      */
-    protected $projectState;
+    protected $height;
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $width;
+
 
 
 

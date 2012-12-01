@@ -26,8 +26,6 @@ class AppKernel extends Kernel
             new Liip\ImagineBundle\LiipImagineBundle(),
             new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
 
-            new \HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
-
             new \Surge\PeerPlatformBundle\SurgePeerPlatformBundle(),
 
         );

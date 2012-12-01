@@ -4,57 +4,27 @@
 {% block content %}
 
 <form action="{{ path("_login_check") }}" method="post">
-{% if(_redir is defined) %}
-<input type="hidden" name="_redir" value="{{_redir}}" />
-{% endif %}
+{% if(_redir is defined) %}<input type="hidden" name="_redir" value="{{_redir}}" />{% endif %}
+<h2>Login</h2>
 
-    <div class="container author-wrapper personal-info">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-        <div class="signin-body-head">
-            <span> {{'sign-in'}}</span>
-        </div>
+    {% if error %}
+    <div style="color:red; text-align: center">{{ error }}</div>
+    {% endif %}
 
-        <div class="payment-main-body-wrapper">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="_username">
 
-            <div class="payment-main-part-wrapper-first">{{'sign in to your account'}}</div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="_password">
 
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-
-            {% if error %}
-            <div style="color:red; text-align: center">{{ error }}</div>
-            {% endif %}
-
-            <div class="payment-label">
-                <label for="username">{{ 'security.login.username'  }}</label>
-                <input type="text" id="username" name="_username">
-            </div>
-
-            <div class="payment-label">
-                <label for="password">{{ 'security.login.password'  }}</label>
-                <input type="password" id="password" name="_password">
-            </div>
-            <div class="payment-label rememberme">
-                   <input type="checkbox" id="remember_me" name="_remember_me" value="on" checked="checked" />
-                   <label for="remember_me">{{ 'security.login.remember_me'  }}</label>
-            </div>
-            <div class="payment-main-part-wrapper-sixth">
-                <input type="submit" value="{{ 'security.login.submit'  }}" id="save">
-                <span class="payment-main-part-wrapper-second"></span>
-            </div>
-
-            <div class="payment-main-part-wrapper-second"><a href="{{path('_security_resetting_request')}}">{{'Forgot password?'}}</a></div>
-            <div class="payment-main-part-wrapper-first"><a href="{{path('_register')}}">{{'Create Account'}}</a></div>
-
-        </div>
+       <input type="checkbox" id="remember_me" name="_remember_me" value="on" checked="checked" />
+       <label for="remember_me">Remember</label>
 
 
+        <input type="submit" value="submit" id="save">
 
-
-
-
-
-    </div>
-<!-- / payment-body-wrapper -->
 </form>
 
 {% endblock%}

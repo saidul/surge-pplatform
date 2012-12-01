@@ -4,9 +4,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
  */
-class SurveyResponse extends EntityBase
+class SurveyAnswer extends EntityBase
 {
 
     /**
@@ -16,5 +15,15 @@ class SurveyResponse extends EntityBase
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     protected $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="SurveyQuestion")
+     */
+    protected $question;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $answer;
 
 }

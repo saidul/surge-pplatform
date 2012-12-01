@@ -5,7 +5,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity
  */
-class Survey extends EntityBase
+class ProjectState
 {
 
     /**
@@ -17,8 +17,8 @@ class Survey extends EntityBase
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Project")
+     * @ORM\Column(type="string")
      */
-    protected $project;
+    protected $name;
 
 }

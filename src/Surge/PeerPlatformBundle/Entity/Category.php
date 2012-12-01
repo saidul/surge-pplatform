@@ -5,7 +5,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity
  */
-class Project extends EntityBase
+class Category extends EntityBase
 {
 
     /**
@@ -29,27 +29,12 @@ class Project extends EntityBase
     /**
      * @ORM\ManyToOne(targetEntity="Category")
      */
-    protected $category;
+    protected $parentCategory;
 
     /**
-     * @ORM\Column(type="decimal")
+     * @ORM\OneToMany(targetEntity="Category", mappedBy="Category")
      */
-    protected $rating;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $longitude;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $latitude;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="ProjectState")
-     */
-    protected $projectState;
+    protected $childCategories;
 
 
 

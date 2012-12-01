@@ -259,10 +259,6 @@ class User extends BaseUser
         return $this->gender;
     }
 
-
-
-
-
     /**
      * Get userRoles
      *
@@ -272,38 +268,4 @@ class User extends BaseUser
     {
         return $this->userRoles;
     }
-
-    public function setFacebookId($facebookId)
-    {
-        $this->facebookId = $facebookId;
-    }
-
-    public function getFacebookId()
-    {
-        return $this->facebookId;
-    }
-
-    public function setGoogleId($googleId)
-    {
-        $this->googleId = $googleId;
-    }
-
-    public function getGoogleId()
-    {
-        return $this->googleId;
-    }
-
-    public function setTwitterId($twitterId)
-    {
-        $this->twitterId = $twitterId;
-    }
-
-    public function getTwitterId()
-    {
-        return $this->twitterId;
-    }
-
-
-
-
 }

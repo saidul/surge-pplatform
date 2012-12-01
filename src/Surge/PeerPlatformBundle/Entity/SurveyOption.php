@@ -5,8 +5,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity
  */
-class Survey extends EntityBase
+class SurveyOption extends EntityBase
 {
+
+    //TODO: lots of todos :(
 
     /**
      *
@@ -17,8 +19,12 @@ class Survey extends EntityBase
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Project")
+     * @ORM\Column(type="string")
      */
-    protected $project;
+    protected $value;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="SurveyQuestion")
+     */
+    protected $question;
 }

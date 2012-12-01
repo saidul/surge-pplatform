@@ -3,6 +3,7 @@
 namespace Surge\PeerPlatformBundle\DataFixtures\ORM;
 
 use Surge\PeerPlatformBundle\Entity\User;
+use Surge\PeerPlatformBundle\Entity\File;
 use Surge\PeerPlatformBundle\Entity\SiteOption;
 use Surge\PeerPlatformBundle\Service\LoremIpsumGenerator;
 use Surge\PeerPlatformBundle\Entity\Role;
@@ -71,7 +72,6 @@ class LoadStaticData extends \Doctrine\Common\DataFixtures\AbstractFixture imple
 
         $this->em = $manager;
         $this->initRoles();
-        $this->loadSiteOptions();
         $this->loadUsers();
 
         $this->em->flush();
@@ -81,7 +81,7 @@ class LoadStaticData extends \Doctrine\Common\DataFixtures\AbstractFixture imple
         $fileName = 'image-0'.rand(1,5).'.jpg';
         $this->prepareFile($this->assetDir."/$fileName" , $this->dataDir."/".$fileName);
 
-        $image = new Document();
+        $image = new File();
         $image->setPath($fileName);
 
         return $image;
@@ -91,25 +91,6 @@ class LoadStaticData extends \Doctrine\Common\DataFixtures\AbstractFixture imple
     {
         $day = rand(2, 30);
         return new \DateTime("-{$day} days");
-    }
-
-    /**
-     * preloads site options
-     */
-    public function loadSiteOptions()
-    {
-        $em = $this->em;
-
-        $options = array();
-        $options[] = new SiteOption('reg_email_confirmation', true);
-        $options[] = new SiteOption('registration_open', true);
-        $options[] = new SiteOption('registration_captcha',true);
-
-        foreach ($options as $opt)
-            $em->persist($opt);
-
-        $em->flush();
-
     }
 
     public function initRoles(){
@@ -156,7 +137,7 @@ class LoadStaticData extends \Doctrine\Common\DataFixtures\AbstractFixture imple
         $user->setLastName($this->lastnames[$user->getGender()][rand(0, count($this->lastnames[$user->getGender()])-1)]);
         $user->setUsername('admin');
         $user->setPlainPassword('admin');
-        $user->setEmail('saidul@hackathonbd.com');
+        $user->setEmail('murubbi@hackathonbd.com');
         $user->setEnabled(true);
         $user->addRole($this->ROLE_SUPER_ADMIN);
         $user->setConfirmationToken(null);

@@ -6,7 +6,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class Document extends EntityBase
+class File extends EntityBase
 {
 
     /**

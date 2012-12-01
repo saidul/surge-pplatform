@@ -17,7 +17,7 @@ use Symfony\Component\Security\Core\Role\Role as CoreRole;
  * Role Entity
  *
  * @ORM\Entity
- * @ORM\Table( name="user_roles" )
+ * @ORM\Table( name="UserRole" )
  *
  */
 class Role extends CoreRole
